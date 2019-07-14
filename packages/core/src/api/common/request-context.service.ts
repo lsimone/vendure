@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, ExecutionContext } from '@nestjs/common';
 import { LanguageCode, Permission } from '@vendure/common/lib/generated-types';
 import { Request } from 'express';
 import { GraphQLResolveInfo } from 'graphql';
@@ -51,6 +51,10 @@ export class RequestContextService {
             authorizedAsOwnerOnly,
             translationFn,
         });
+    }
+
+    isGraphQl(context: ExecutionContext): boolean {
+        return context.switchToHttp().getRequest() === undefined;
     }
 
     private getChannelToken(req: Request): string {

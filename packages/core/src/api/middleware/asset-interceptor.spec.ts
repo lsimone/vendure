@@ -6,6 +6,7 @@ import { MockConfigService } from '../../config/config.service.mock';
 import { Asset } from '../../entity/asset/asset.entity';
 
 import { AssetInterceptor } from './asset-interceptor';
+import { MockRequestContextService } from '../common/request.context.mock';
 
 describe('AssetInterceptor', () => {
     function testInterceptor<T>(
@@ -16,7 +17,8 @@ describe('AssetInterceptor', () => {
             const toAbsoluteUrl = jest.fn().mockReturnValue('visited');
             const configService = new MockConfigService();
             configService.assetOptions.assetStorageStrategy = { toAbsoluteUrl };
-            const interceptor = new AssetInterceptor(configService as any);
+            const requestContextService = new MockRequestContextService()
+            const interceptor = new AssetInterceptor(configService as any, requestContextService as any);
             const executionContext = new ExecutionContextHost([0, 0, { req: {} }]);
             const next: CallHandler = { handle: () => of(response) };
 

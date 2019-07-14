@@ -1,3 +1,27 @@
+# WIP
+https://github.com/vendure-ecommerce/vendure/issues/123
+
+- provare a creare plugin con defineControllers()
+- esporre un endpoint qualsiasi REST
+- provare ad usare la logica di vendure da dentro il plugin (per ottenere i dati e mapparli)
+- implementare tutta la API
+- scrivere test dove necessario
+
+
+BRIDGE
+- capire cocm'è implementato defineProviders() per avere defineControllers()
+- leggere  la doc (soprattutto la parte graphQL) e vedere com'è implementata in vendure
+- 
+- leggere howto https://github.com/DivanteLtd/vue-storefront-integration-boilerplate
+- installare e lanciare server vendure in locale con le api
+- collegare la admin-ui
+- 
+- provare a creare nuovo endpoint su vendure. es: /vsbridge/auth/admin
+- 
+
+DB=sqlite yarn dev-server:start
+
+
 # Vendure
 
 A headless [GraphQL](https://graphql.org/) ecommerce framework built on [Node.js](https://nodejs.org) with [Nest](https://nestjs.com/) with [TypeScript](http://www.typescriptlang.org/).

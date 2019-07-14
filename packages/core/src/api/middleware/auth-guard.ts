@@ -30,6 +30,9 @@ export class AuthGuard implements CanActivate {
     ) {}
 
     async canActivate(context: ExecutionContext): Promise<boolean> {
+        if(!this.requestContextService.isGraphQl(context)) {
+            return true;
+        }
         const graphQlContext = GqlExecutionContext.create(context);
         const ctx = graphQlContext.getContext();
         const info = graphQlContext.getInfo<GraphQLResolveInfo>();

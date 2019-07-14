@@ -1,4 +1,4 @@
-import { Provider } from '@nestjs/common';
+import { Provider, Module } from '@nestjs/common';
 import { Type } from '@vendure/common/lib/shared-types';
 import { DocumentNode } from 'graphql';
 
@@ -92,6 +92,12 @@ export interface VendurePlugin {
      * The plugin may define custom providers which can then be injected via the Nest DI container.
      */
     defineProviders?(): Provider[];
+
+    /**
+     * @description
+     * The plugin may define custom modules which can then be injected via the Nest DI container.
+     */
+    defineModules?(): any[];
 
     /**
      * @description

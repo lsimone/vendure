@@ -13,6 +13,7 @@ import { VENDURE_WORKER_CLIENT } from '../worker/constants';
 import { getPluginAPIExtensions } from './plugin-utils';
 
 const pluginProviders = getPluginProviders();
+const pluginModules = getPluginModules();
 
 /**
  * This module collects and re-exports all providers defined in plugins so that they can be used in other
@@ -22,6 +23,7 @@ const pluginProviders = getPluginProviders();
     imports: [
         EventBusModule,
         ConfigModule,
+        ...pluginModules
     ],
     providers: [
         {
@@ -60,6 +62,14 @@ export class PluginModule {
             imports: [ServiceModule.forWorker()],
         };
     }
+}
+
+function getPluginModules() {
+    const plugins = getConfig().plugins;
+    return plugins
+        .map(p => (p.defineModules ? p.defineModules() : undefined))
+        .filter(notNullOrUndefined)
+        .reduce((flattened, modules) => flattened.concat(modules), []);
 }
 
 function getPluginProviders() {

@@ -5,6 +5,7 @@ import { ADMIN_API_PATH, API_PORT, SHOP_API_PATH } from '@vendure/common/lib/sha
 import { DefaultLogger, DefaultSearchPlugin, examplePaymentHandler, LogLevel, VendureConfig } from '@vendure/core';
 import { ElasticsearchPlugin } from '@vendure/elasticsearch-plugin';
 import { defaultEmailHandlers, EmailPlugin } from '@vendure/email-plugin';
+import { RestPlugin } from './restPlugin/restPlugin';
 import path from 'path';
 import { ConnectionOptions } from 'typeorm';
 
@@ -60,6 +61,7 @@ export const devConfig: VendureConfig = {
         new AdminUiPlugin({
             port: 5001,
         }),
+        new RestPlugin()
     ],
 };
 
