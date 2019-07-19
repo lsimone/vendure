@@ -19,6 +19,14 @@ BRIDGE
 - provare a creare nuovo endpoint su vendure. es: /vsbridge/auth/admin
 - 
 
+## install / configure
+yarn
+yarn bootstrap
+yarn build
+cd packages/dev-server
+DB=sqlite yarn populate
+
+## dev
 DB=sqlite yarn dev-server:start
 
 
