@@ -7,6 +7,10 @@ https://github.com/vendure-ecommerce/vendure/issues/123
 - implementare tutta la API
 - scrivere test dove necessario
 
+# REFERENCE
+- the big view: https://github.com/DivanteLtd/vue-storefront-integration-boilerplate
+- API SPECS: https://github.com/DivanteLtd/vue-storefront-integration-boilerplate/blob/master/1.%20Expose%20the%20API%20endpoints%20required%20by%20VS/Required%20API%20specification.md
+- Magento example: https://github.com/DivanteLtd/vue-storefront-api
 
 BRIDGE
 - capire cocm'è implementato defineProviders() per avere defineControllers()
