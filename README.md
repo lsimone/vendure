@@ -29,6 +29,9 @@ DB=sqlite yarn populate
 ## dev
 DB=sqlite yarn dev-server:start
 
+## prima di rimergiare:
+ripristinare package.json con commitlint e tests
+
 
 # Vendure
 

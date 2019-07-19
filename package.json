@@ -16,8 +16,6 @@
     "lint:admin-ui": "cd admin-ui && yarn lint --fix",
     "precommit": "lint-staged",
     "postcommit": "git update-index --again",
-    "commitmsg": "commitlint -e $GIT_PARAMS",
-    "prepush": "yarn test:all && cd admin-ui && yarn build --prod",
     "version": "yarn build && yarn generate-changelog && git add CHANGELOG.md",
     "dev-server:start": "cd packages/dev-server && yarn start",
     "dev-server:populate": "cd packages/dev-server && yarn populate",
@@ -73,6 +71,11 @@
           "sentence-case"
         ]
       ]
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
     }
   }
 }
