@@ -30,7 +30,10 @@ DB=sqlite yarn populate
 DB=sqlite yarn dev-server:start
 
 ## prima di rimergiare:
-ripristinare package.json con commitlint e tests
+squashare i commits
+ripristinare: 
+- package.json con commitlint e tests e senza commitizen
+- yarn.lock
 
 
 # Vendure
