@@ -15,6 +15,7 @@
     "lint:packages": "yarn tslint --fix",
     "lint:admin-ui": "cd admin-ui && yarn lint --fix",
     "version": "yarn check-imports && yarn build && yarn generate-changelog && git add CHANGELOG.md",
+    "dev": "DB=sqlite yarn dev-server:start",
     "dev-server:start": "cd packages/dev-server && yarn start",
     "dev-server:populate": "cd packages/dev-server && yarn populate",
     "test:all": "cd admin-ui && yarn test --watch=false --browsers=ChromeHeadlessCI --progress=false && cd ../ && yarn test:common && yarn test:core && yarn test:email-plugin && yarn test:elasticsearch-plugin && yarn test:e2e",
@@ -73,14 +74,6 @@
           "sentence-case"
         ]
       ]
-    }
-  },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS",
-      "post-commit": "git update-index --again",
-      "pre-commit": "lint-staged",
-      "pre-push": "yarn test:all && cd admin-ui && yarn build --prod"
     }
   }
 }
