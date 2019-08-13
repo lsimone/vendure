@@ -1,0 +1,368 @@
+{
+    "code": 200,
+    "result": [
+        {
+            "code": "Retail Customer - Taxable Good - Rate 1",
+            "priority": 1,
+            "position": 0,
+            "calculate_subtotal": 0,
+            "id": 4,
+            "tax_rates_ids": [
+                16,
+                24,
+                19,
+                23,
+                18,
+                20,
+                22,
+                17,
+                21,
+                33
+            ],
+            "product_tax_class_ids": [
+                2
+            ],
+            "customer_tax_class_ids": [
+                3,
+                7,
+                8
+            ],
+            "rates": [
+                {
+                    "tax_country_id": "US",
+                    "tax_region_id": 12,
+                    "tax_postcode": "*",
+                    "code": "US-CA-*-Rate 1",
+                    "rate": 9,
+                    "zip_is_range": null,
+                    "zip_from": null,
+                    "zip_to": null,
+                    "id": 16
+                },
+                {
+                    "tax_country_id": "US",
+                    "tax_region_id": 14,
+                    "tax_postcode": "*",
+                    "code": "US-CT-*-Rate 1",
+                    "rate": 6.98,
+                    "zip_is_range": null,
+                    "zip_from": null,
+                    "zip_to": null,
+                    "id": 24
+                },
+                {
+                    "tax_country_id": "US",
+                    "tax_region_id": 18,
+                    "tax_postcode": "*",
+                    "code": "US-FL-*-Rate 1 ",
+                    "rate": 7.85,
+                    "zip_is_range": null,
+                    "zip_from": null,
+                    "zip_to": null,
+                    "id": 19
+                },
+                {
+                    "tax_country_id": "US",
+                    "tax_region_id": 23,
+                    "tax_postcode": "*",
+                    "code": "US-IL-*-Rate 1",
+                    "rate": 7.8,
+                    "zip_is_range": null,
+                    "zip_from": null,
+                    "zip_to": null,
+                    "id": 23
+                },
+                {
+                    "tax_country_id": "US",
+                    "tax_region_id": 32,
+                    "tax_postcode": "*",
+                    "code": "US-MA-*-Rate 1",
+                    "rate": 7.95,
+                    "zip_is_range": null,
+                    "zip_from": null,
+                    "zip_to": null,
+                    "id": 18
+                },
+                {
+                    "tax_country_id": "US",
+                    "tax_region_id": 33,
+                    "tax_postcode": "*",
+                    "code": "US-MI-*-Rate 1",
+                    "rate": 7.748,
+                    "zip_is_range": null,
+                    "zip_from": null,
+                    "zip_to": null,
+                    "id": 20
+                },
+                {
+                    "tax_country_id": "US",
+                    "tax_region_id": 41,
+                    "tax_postcode": "*",
+                    "code": "US-NJ-*-Rate 1",
+                    "rate": 7,
+                    "zip_is_range": null,
+                    "zip_from": null,
+                    "zip_to": null,
+                    "id": 22
+                },
+                {
+                    "tax_country_id": "US",
+                    "tax_region_id": 43,
+                    "tax_postcode": "*",
+                    "code": "US-NY-*-Rate 1",
+                    "rate": 8.375,
+                    "zip_is_range": null,
+                    "zip_from": null,
+                    "zip_to": null,
+                    "id": 17
+                },
+                {
+                    "tax_country_id": "US",
+                    "tax_region_id": 47,
+                    "tax_postcode": "*",
+                    "code": "US-OH-*-Rate 1",
+                    "rate": 5.5,
+                    "zip_is_range": null,
+                    "zip_from": null,
+                    "zip_to": null,
+                    "id": 21
+                },
+                {
+                    "tax_country_id": "US",
+                    "tax_region_id": 57,
+                    "tax_postcode": "*",
+                    "code": "US-TX-*-Rate 1",
+                    "rate": 5.879,
+                    "zip_is_range": null,
+                    "zip_from": null,
+                    "zip_to": null,
+                    "id": 33
+                }
+            ]
+        },
+        {
+            "code": "Wholesale Customer - Tax Exempt ",
+            "priority": 0,
+            "position": 0,
+            "calculate_subtotal": 0,
+            "id": 5,
+            "tax_rates_ids": [
+                7
+            ],
+            "product_tax_class_ids": [
+                6
+            ],
+            "customer_tax_class_ids": [
+                5
+            ],
+            "rates": [
+                {
+                    "tax_country_id": "US",
+                    "tax_region_id": 0,
+                    "tax_postcode": "*",
+                    "code": "US-All States-WholesaleTaxExemptRate",
+                    "rate": 0,
+                    "zip_is_range": null,
+                    "zip_from": null,
+                    "zip_to": null,
+                    "id": 7
+                }
+            ]
+        },
+        {
+            "code": "Private Sales - Shipping Taxes",
+            "priority": 0,
+            "position": 0,
+            "calculate_subtotal": 0,
+            "id": 10,
+            "tax_rates_ids": [
+                12
+            ],
+            "product_tax_class_ids": [
+                4
+            ],
+            "customer_tax_class_ids": [
+                9
+            ],
+            "rates": [
+                {
+                    "tax_country_id": "US",
+                    "tax_region_id": 0,
+                    "tax_postcode": "*",
+                    "code": "US-All States-PrivateSalesShippingRate",
+                    "rate": 4.92,
+                    "zip_is_range": null,
+                    "zip_from": null,
+                    "zip_to": null,
+                    "id": 12
+                }
+            ]
+        },
+        {
+            "code": "Private Sales - Taxable Goods - Rate 2",
+            "priority": 0,
+            "position": 0,
+            "calculate_subtotal": 0,
+            "id": 11,
+            "tax_rates_ids": [
+                25,
+                27,
+                34,
+                35,
+                29,
+                32,
+                30,
+                28,
+                31,
+                26
+            ],
+            "product_tax_class_ids": [
+                2
+            ],
+            "customer_tax_class_ids": [
+                9
+            ],
+            "rates": [
+                {
+                    "tax_country_id": "US",
+                    "tax_region_id": 12,
+                    "tax_postcode": "*",
+                    "code": "US-CA-*-Rate 2",
+                    "rate": 8.36,
+                    "zip_is_range": null,
+                    "zip_from": null,
+                    "zip_to": null,
+                    "id": 25
+                },
+                {
+                    "tax_country_id": "US",
+                    "tax_region_id": 14,
+                    "tax_postcode": "*",
+                    "code": "US-CT-*-Rate 2",
+                    "rate": 6,
+                    "zip_is_range": null,
+                    "zip_from": null,
+                    "zip_to": null,
+                    "id": 27
+                },
+                {
+                    "tax_country_id": "US",
+                    "tax_region_id": 18,
+                    "tax_postcode": "*",
+                    "code": "US-FL-*-Rate 2",
+                    "rate": 8.4,
+                    "zip_is_range": null,
+                    "zip_from": null,
+                    "zip_to": null,
+                    "id": 34
+                },
+                {
+                    "tax_country_id": "US",
+                    "tax_region_id": 23,
+                    "tax_postcode": "*",
+                    "code": "US-IL-*-Rate 2",
+                    "rate": 6.9,
+                    "zip_is_range": null,
+                    "zip_from": null,
+                    "zip_to": null,
+                    "id": 35
+                },
+                {
+                    "tax_country_id": "US",
+                    "tax_region_id": 32,
+                    "tax_postcode": "*",
+                    "code": "US-MA-*-Rate 2",
+                    "rate": 7.987,
+                    "zip_is_range": null,
+                    "zip_from": null,
+                    "zip_to": null,
+                    "id": 29
+                },
+                {
+                    "tax_country_id": "US",
+                    "tax_region_id": 33,
+                    "tax_postcode": "*",
+                    "code": "US-MI-*-Rate 2",
+                    "rate": 6.72,
+                    "zip_is_range": null,
+                    "zip_from": null,
+                    "zip_to": null,
+                    "id": 32
+                },
+                {
+                    "tax_country_id": "US",
+                    "tax_region_id": 41,
+                    "tax_postcode": "*",
+                    "code": "US-NJ-*-Rate 2",
+                    "rate": 7.67,
+                    "zip_is_range": null,
+                    "zip_from": null,
+                    "zip_to": null,
+                    "id": 30
+                },
+                {
+                    "tax_country_id": "US",
+                    "tax_region_id": 43,
+                    "tax_postcode": "*",
+                    "code": "US-NY-*-Rate 2",
+                    "rate": 8.78,
+                    "zip_is_range": null,
+                    "zip_from": null,
+                    "zip_to": null,
+                    "id": 28
+                },
+                {
+                    "tax_country_id": "US",
+                    "tax_region_id": 47,
+                    "tax_postcode": "*",
+                    "code": "US-OH-*-Rate 2",
+                    "rate": 6,
+                    "zip_is_range": null,
+                    "zip_from": null,
+                    "zip_to": null,
+                    "id": 31
+                },
+                {
+                    "tax_country_id": "US",
+                    "tax_region_id": 57,
+                    "tax_postcode": "*",
+                    "code": "US-TX-*-Rate 2",
+                    "rate": 5.7,
+                    "zip_is_range": null,
+                    "zip_from": null,
+                    "zip_to": null,
+                    "id": 26
+                }
+            ]
+        },
+        {
+            "code": "Not Logged In - Taxable Goods",
+            "priority": 0,
+            "position": 0,
+            "calculate_subtotal": 0,
+            "id": 13,
+            "tax_rates_ids": [
+                15
+            ],
+            "product_tax_class_ids": [
+                2
+            ],
+            "customer_tax_class_ids": [
+                10
+            ],
+            "rates": [
+                {
+                    "tax_country_id": "US",
+                    "tax_region_id": 0,
+                    "tax_postcode": "*",
+                    "code": "US-All States-TaxableGoodsRate",
+                    "rate": 8.25,
+                    "zip_is_range": null,
+                    "zip_from": null,
+                    "zip_to": null,
+                    "id": 15
+                }
+            ]
+        }
+    ]
+}
