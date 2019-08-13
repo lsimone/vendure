@@ -15,6 +15,7 @@ import path from 'path';
 import { ConnectionOptions } from 'typeorm';
 
 import { RestPlugin } from './rest-plugin';
+import { VSFPlugin } from './vsf-plugin'
 
 /**
  * Config settings used during development
@@ -55,6 +56,7 @@ export const devConfig: VendureConfig = {
         }),
         DefaultSearchPlugin,
         RestPlugin,
+        VSFPlugin,
         // ElasticsearchPlugin.init({
         //     host: 'http://192.168.99.100',
         //     port: 9200,
