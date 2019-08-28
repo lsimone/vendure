@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "populate": "node -r ts-node/register populate-dev-server.ts",
-    "run:server": "node -r ts-node/register index.ts",
+    "run:server": "node --inspect -r ts-node/register index.ts",
     "run:worker": "node -r ts-node/register index-worker.ts",
     "start": "concurrently yarn:run*",
     "load-test:1k": "node -r ts-node/register load-testing/run-load-test.ts 1000",
@@ -20,6 +20,7 @@
     "@vendure/core": "^0.2.0",
     "@vendure/elasticsearch-plugin": "^0.2.0",
     "@vendure/email-plugin": "^0.2.0",
+    "object-mapper": "^5.0.0",
     "typescript": "^3.3.4000"
   },
   "devDependencies": {

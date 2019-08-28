@@ -16,6 +16,8 @@
     "lint:admin-ui": "cd admin-ui && yarn lint --fix",
     "version": "yarn check-imports && yarn build && yarn generate-changelog && git add CHANGELOG.md",
     "dev": "DB=sqlite yarn dev-server:start",
+    "populate-elastic": "curl -X DELETE 'localhost:9200/vue_storefront_vendure?pretty' && cd '../vue-storefront-integration-boilerplate/2. Use node-app to import the data/node-app/src' && node index.js new && node index.js attributes && node index.js taxrules && node index.js categories && node index.js products && node index.js publish",
+    "populate": "cd packages/dev-server/vsf-plugin/db && DB=sqlite node -r ts-node/register populate-dev-server.ts",
     "dev-server:start": "cd packages/dev-server && yarn start",
     "dev-server:populate": "cd packages/dev-server && yarn populate",
     "test:all": "cd admin-ui && yarn test --watch=false --browsers=ChromeHeadlessCI --progress=false && cd ../ && yarn test:common && yarn test:core && yarn test:email-plugin && yarn test:elasticsearch-plugin && yarn test:e2e",

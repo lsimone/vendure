@@ -97,6 +97,7 @@ function getDbConfig(): ConnectionOptions {
             console.log('Using sqlite connection');
             return {
                 type: 'sqlite',
+                // synchronize: true,
                 database: path.join(__dirname, 'vendure.sqlite'),
             };
         case 'sqljs':

@@ -1,5 +1,5 @@
 export const auth = () : object => {
-  console.warn('auth required')
+  console.log('auth required')
   // TODO: implement authentication
   return {
     "code": 200,
