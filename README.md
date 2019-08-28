@@ -2,11 +2,6 @@
 https://github.com/vendure-ecommerce/vendure/issues/123
 
 TODO / PIANO VENDURE
-- provare a copiare le risposte mockate e far girare node-app (e agganciare a VSF per vedere risultato)
-- schema di categorie ed opzioni di CB/UPTOBE, controllare che vendure le possa gestire
-
-- mapping di attributes, categories, taxrules, products
-- testare import (node-app)
 - dockerizzare e mettere in prod vendure => https://github.com/vendure-ecommerce/vendure-demo/blob/master/Dockerfile per VSF mi suggeriscono AWS ECS (https://aws.amazon.com/ecs/), probabilmente va bene anche per vendure
 - dopo rilascio, aggiungere funzionalità mancanti sul backoffice
 
@@ -41,7 +36,14 @@ DB=sqlite yarn populate
 DB=sqlite yarn dev-server:start
 http://localhost:3000/vsbridge/tax
 
-### integration project
+### integration project vue-storefront-integration-boilerplate
+
+cd ../vue-storefront-integration-boilerplate/2.\ Use\ node-app\ to\ import\ the\ data/node-app/src
+
+AGGIORNA CONFIG FILE:
+code ../vue-storefront-integration-boilerplate/2.\ Use\ node-app\ to\ import\ the\ data/node-app/config.json
+
+Create new version of index (for example: vue_storefront_mangento1_1):
 node index.js new
 
 node index.js attributes

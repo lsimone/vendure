@@ -3,14 +3,19 @@ import {
     CollectionService,
     Ctx,
     FacetService,
-    LanguageCode,
     ProductService,
+    ProductVariantService,
+    ProductOptionGroupService,
     RequestContext,
     ShippingMethodService,
     TaxRateService,
 } from '@vendure/core';
 
 import { auth } from './resolvers/auth';
+import { getCategories } from './resolvers/categories.js';
+import { getProducts } from './resolvers/products';
+import { getAttributes } from './resolvers/attributes';
+import { getMockedTaxrules } from './resolvers/taxrules';
 
 @Controller('vsbridge')
 export class VSFController {
@@ -18,6 +23,8 @@ export class VSFController {
         private shippingMethodService: ShippingMethodService,
         private taxRateService: TaxRateService,
         private productService: ProductService,
+        private productVariantService: ProductVariantService,
+        private productOptionGroupService: ProductOptionGroupService,
         private collectionService: CollectionService,
         private facetService: FacetService,
     ) {}
@@ -33,25 +40,27 @@ export class VSFController {
     @Get('attributes/index')
     getAttributes(): object {
         // TODO: remove hardcoded languagecode
-        return this.facetService.findAll(LanguageCode.it);
+        return getAttributes(this.facetService)
     }
 
     // GET /vsbridge/categories/index
     // exclamation Note: while this method should return the full category tree, it won't work out out of the box with vue-storefront SidebarMenu.js. It requires you the first node to have level of 2 contrary to level 0 in example below.
+    // https://github.com/vendure-ecommerce/vendure/blob/master/admin-ui/src/app/catalog/components/collection-tree/array-to-tree.ts
     @Get('categories/index')
     getCategories(@Ctx() ctx: RequestContext): object {
-        return this.collectionService.findAll(ctx);
+        return getCategories(ctx, this.collectionService)
     }
 
     // GET /taxrules/index
     @Get('taxrules/index')
     getTaxRules(): object {
-        return this.taxRateService.findAll();
+        return getMockedTaxrules(this.taxRateService)
     }
 
     @Get('products/index')
     getProducts(@Ctx() ctx: RequestContext) {
-        return this.productService.findAll(ctx);
+        // this.productOptionGroupService.findOne(ctx, id)
+        return getProducts(this.productService, this.productVariantService, this.productOptionGroupService, this.collectionService, this.facetService, ctx)
     }
 
     /**
