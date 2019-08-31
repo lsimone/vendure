@@ -11,20 +11,6 @@ TODO / PIANO VENDURE
 - Magento example: https://github.com/DivanteLtd/vue-storefront-api
 - customizing models / adding fields: https://www.vendure.io/docs/developer-guide/customizing-models/
 
-DUBBI: 
-VENDURE:
-- rimuovere/inibire elasticsearch plugin?
-- is it possible to get collections as a tree?
-- how should I add fields needed by VSF but not present in vendure to vendure entities?
-- how should I populate/init the db when I will install it in production?
--
-
-VSF
-- is there an img resizer that pulls images from the backend?
-- /vsbridge/catalog to be exposed by vendure (Catalog endpoints are a proxy to Elastic Search 5.x and can be used to search the store catalog): should it use another elastic instance? is elastic already included in VSF installation?
-- are /catalog, /product/list, /product/render-list, /img supposed to be exposed by the vendure API wrapper or they are provided by VSF?
-
-
 ## install / configure
 yarn
 yarn bootstrap
@@ -69,58 +55,6 @@ squashare i commits
 ripristinare: 
 - package.json con commitlint e tests e senza commitizen
 - yarn.lock
-
-## VSF entities
-- attributes es: accessories_size(S, M, L, XL), books_music_type(books, music), 
-- categories TREE, es: Root, Default, Women, Men...
-- taxrules admin-api:taxRates
-- products  con type_id=configurable ha configurable_children array con dentro altri subprodotti , media_gallery e configurable_options(Color, Size)
-
-
-MICHAEL
-•  taxrules => vendure admin-api:taxRates
-Their structure is quite different from the Vendure one. I'm not exactly sure how they map, but I guess you'll need to do quite a bit of data manipulation to get the structures to fit.
-• - products  => vendure products
-Looks like one of their "products" is a mix of a Vendure Product and ProductVariant, since it includes things like "description" (Product) and price (ProductVariant)
-Oh they have 2 kinds - "simple" and "configurable"
-Simple looks like a Vendure Product with only 1 ProductVariant.
-That part looks totally doable, I think all the data is there, just needs arranging right.
-• - attributes (i.e: accessories_size(S, M, L, XL), books_music_type(books, music) )  => don't know yet
-This concept seems to map to Vendure Facets/FacetValues
-Looking at the cart stuff, it looks also doable although the way options work is quite different.
-In Vendure you don't need to specify item options, since options are implicit in the product variant id (i.e. a single product variant exists for every possible combination of options)
-There is no coupon support yet.
-• GET /vsbridge/cart/payment-methods
-There is currently no way to list payment methods in the Shop API. I plan to add this though.
-• POST /vsbridge/cart/shipping-methods
-This corresponds to the eligibleShippingMethods in the Shop API
-• POST /vsbridge/cart/shipping-information
-Looks like the setOrderShippingMethod mutation in Shop API
-• POST /vsbridge/cart/collect-totals
-I think you can just query activeOrder for this data
-• POST /vsbridge/user/create
-This is the registerCustomerAccount mutation in Shop API. Note that if you want to also pass a password, you need to set requireVerification to false in authOptions. See https://www.vendure.io/docs/typescript-api/auth/auth-options/#requireverification
-• POST /vsbridge/user/login
-login mutation. simple.
-• POST /vsbridge/user/refresh
-There is no concept of refreshing tokens in Vendure, it is not required.
-• POST /vsbridge/user/resetPassword
-This is the requestPasswordReset mutation.
-• POST /vsbridge/user/changePassword
-This is the resetPassword mutation, but in Vendure the old password is not required (indentity is implicit if the user posesses a valid token)
-• GET /vsbridge/user/me
-• GET /vsbridge/user/order-history
-These are both covered by the activeCustomer query
-• POST /vsbridge/user/me
-This is covered by updateCustomer and updateCustomerAddress mutations (edited) 
-• GET /vsbridge/stock/check/:sku
-Stock data is not currently exposed in the Shop API.
-• /vsbridge/catalog
-Not quite sure how this fits in. It's just a raw Elasticsearch request/response. Is that provided already by the VSF architecture?
-• /vsbridge/product/list and /vsbridge/product/render-list
-It says magento-specific, and of course Vendure will not render anything for you! But the raw data just looks like the products query
-I have the same question as you about the /img endpoint. Looks very similar to what the DefaultAssetPlugin provides.
-
 
 # Vendure
 
