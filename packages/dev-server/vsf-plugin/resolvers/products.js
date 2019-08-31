@@ -6,6 +6,11 @@ const VISIBILITY_DEF_ROOT = 4
 const VISIBILITY_DEF_VARIANT = 1
 const TAX_CLASS_ID_DEF = '2'
 
+const ABSTRACT_MOCK = 'This shirt wouldn’t be giant on a Giant, but on you - a regular sized homosapien - it will be a little oversized. But not all over. Just on the width and the armhole, but not the neck or the collars or sleeves or the length - so you’re not like swimming in it. So it just looks a little bit nostalgic. A little bit the future. A little bit rumply. A little bit easy breezy Chambray Denim-y, Japanese Organic Cotton-y. And it feels super soft in a nice year round weight with a twill tape detail at the bottom because…well, just because. Just another silhouette to suit a mood. That is what this is. And in case you hadn’t heard - volume is like so fucking majorsaurus right now.<br>Machine wash it in warm water. Never use bleach. Hang dry it because it\'ll extend the life of the garment and it saves energy. If you need to throw it in the dryer, use a low temperature and make sure you\'ve sized up because even though it\'s been wash tested, it\'s probably going to shrink. Cotton does that. Ironing is fine, iron it high if you want.'
+const MIN_SIZE_MOCK = 34
+const MAX_SIZE_MOCK = 43
+const EDITORIAL_IMAGES_MOCKS = ['/editorial1.png', '/editorial2.png']
+
 // Looks like one of their "products" is a mix of a Vendure Product and ProductVariant, since it includes things like "description" (Product) and price (ProductVariant)
 // Oh they have 2 kinds - "simple" and "configurable"
 // Simple looks like a Vendure Product with only 1 ProductVariant.
@@ -28,7 +33,7 @@ const getOption = optName => optGroups => {
     }
 }
 
-const getSize = getOption('size')
+// const getSize = getOption('size')
 const getColor = getOption('color')
 
 const VARIANT_MAP = (options, parent_id) => ({
@@ -56,7 +61,7 @@ const VARIANT_MAP = (options, parent_id) => ({
     },
     __transform: {
         // configurable_children: ({variants}) => variants.map(mapVariant),
-        size: getSize(options),
+        // size: getSize(options),
         color: getColor(options),
         price: ({priceWithTax}) => priceWithTax/100,
         final_price: ({priceWithTax}) => priceWithTax/100,
@@ -129,9 +134,13 @@ const mergeDefaultVariant = (product, defVariant, multiVariant) => {
         short_description: product.description,
         product_id: product.id,
         parent_id: null,
+        abstract: ABSTRACT_MOCK,
+        editorial_images: EDITORIAL_IMAGES_MOCKS,
+        min_size: MIN_SIZE_MOCK,
+        max_size: MAX_SIZE_MOCK,
         ...(multiVariant ? {
             color: null,
-            size: null
+            // size: null
         } : {})
         // ...mapRootProd(product)
     }
@@ -179,7 +188,7 @@ const mapProduct = (options, collections, attributes) => product => {
         const mapOptions = mapObj(OPTIONS_MAP(allOptions, attributes))
         prod.configurable_options = options.map(mapOptions)
         prod.color_options = getIdsFromOptions('color', prod.configurable_options)
-        prod.size_options = getIdsFromOptions('size', prod.configurable_options)
+        // prod.size_options = getIdsFromOptions('size', prod.configurable_options)
     } 
     return prod
 }
