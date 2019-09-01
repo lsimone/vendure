@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Param } from '@nestjs/common';
+import { Controller, Get, Post, Param, Query, Body } from '@nestjs/common';
 import {
     CollectionService,
     Ctx,
@@ -9,6 +9,8 @@ import {
     RequestContext,
     ShippingMethodService,
     TaxRateService,
+    OrderService,
+    CustomerService
 } from '@vendure/core';
 
 import { auth } from './resolvers/auth';
@@ -16,11 +18,16 @@ import { getCategories } from './resolvers/categories.js';
 import { getProducts } from './resolvers/products';
 import { getAttributes } from './resolvers/attributes';
 import { getMockedTaxrules } from './resolvers/taxrules';
+import { createCart, deleteCart, pullCart, updateCart } from './resolvers/cart';
+import { getStock } from './resolvers/stock';
+import { createOrder } from './resolvers/orders';
 
 @Controller('vsbridge')
 export class VSFController {
     constructor(
         private shippingMethodService: ShippingMethodService,
+        private customerService: CustomerService,
+        private orderService: OrderService,
         private taxRateService: TaxRateService,
         private productService: ProductService,
         private productVariantService: ProductVariantService,
@@ -72,28 +79,28 @@ export class VSFController {
     // https://github.com/DivanteLtd/vue-storefront-integration-boilerplate/blob/master/1.%20Expose%20the%20API%20endpoints%20required%20by%20VS/Required%20API%20specification.md#cart-module
     @Post('cart/create')
     createCart(): object {
-        return { res: 'TO BE IMPLEMENTED' };
+        return createCart()
     }
 
     // GET /vsbridge/cart/pull
     // Method used to fetch the current server side shopping cart content, used mostly for synchronization purposes when config.cart.synchronize=true
     @Get('cart/pull')
-    getCart(): object {
-        return { res: 'TO BE IMPLEMENTED' };
+    getCart(@Query('cartId') cartId: String): object {
+        return pullCart(cartId)
     }
 
     // POST /vsbridge/cart/update
     // param cartId
     // Method used to add or update shopping cart item's server side. As a request body there should be JSON given representing the cart item. sku and qty are the two required options. If you like to update/edit server cart item You need to pass item_id identifier as well (can be obtainted from api/cart/pull)
     @Post('cart/update')
-    updateCart(): object {
-        return { res: 'TO BE IMPLEMENTED' };
+    updateCart(@Query('cartId') cartId: String, @Body() cartItem: object): object {
+        return updateCart(cartId, cartItem)
     }
 
     // POST /vsbridge/cart/delete
     @Post('cart/delete')
-    deleteCart(): object {
-        return { res: 'TO BE IMPLEMENTED' };
+    deleteCart(@Query('cartId') cartId: String, @Body() cartItem: object): object {
+        return deleteCart(cartId, cartItem)
     }
 
     // POST /vsbridge/cart/apply-coupon
@@ -195,15 +202,22 @@ export class VSFController {
     }
 
     // GET /vsbridge/stock/check/:sku
-    @Get('stock/check/:sku')
-    getStock(@Param('sku') sku: string): object {
-        return { res: 'TO BE IMPLEMENTED' };
+    @Get('stock/check')
+    getStock(@Query('sku') sku: string): object {
+        return getStock(sku)
     }
 
     // POST '/vsbridge/order/create`
     @Post('order/create')
-    createOrder(): object {
-        return { res: 'TO BE IMPLEMENTED' };
+    createOrder(@Ctx() ctx: RequestContext, @Body() order: object): object {
+        // return this.orderService.setShippingAddress(ctx, 1, {streetLine1: 'ew', countryCode: 'IT'})
+        // this.orderService.setShippingAddress()
+        // this.orderService.addItemToOrder() // ctx, orderId, variantId, quantity, customFields
+        // this.orderService.addCustomerToOrder() // orderId, customer
+        // this.orderService.
+        return createOrder(this.orderService, this.productVariantService, ctx, order)
+        // const ord = await this.orderService.create(ctx, order.user_id)
+        // order.products.forEach(p => this.orderService.addItemToOrder(ctx, ord.id, getProductVariantId(p), p.qty, {size: pullCart.size}))
     }
 
     // TBD ???

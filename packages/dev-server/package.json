@@ -21,7 +21,8 @@
     "@vendure/elasticsearch-plugin": "^0.2.0",
     "@vendure/email-plugin": "^0.2.0",
     "object-mapper": "^5.0.0",
-    "typescript": "^3.3.4000"
+    "typescript": "^3.3.4000",
+    "uuid": "^3.3.3"
   },
   "devDependencies": {
     "@types/csv-stringify": "^1.4.3",
