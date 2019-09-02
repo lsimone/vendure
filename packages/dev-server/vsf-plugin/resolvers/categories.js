@@ -1,7 +1,11 @@
 const { handleResponse, handleError } = require('./response')
-const map = require('object-mapper')
+const { mapObj } = require('./map')
 
 const CATEGORY_MAP = {
+    __statics: {
+        is_active: true,
+        include_in_menu: true
+    },
     'id': 'id', 
     'createdAt': 'createdAt', 
     'updatedAt': 'updatedAt', 
@@ -17,6 +21,8 @@ const CATEGORY_MAP = {
     // url_key: mocked => TBD
     'parent.id': 'parent_id'
 }
+
+const mapCategory = mapObj(CATEGORY_MAP)
 
 const mappedList = {}
 
@@ -71,7 +77,7 @@ const mapAndLinkCategory = items => category => {
     if (found) {
         return found
     }
-    const mapped = map(category, CATEGORY_MAP)
+    const mapped = mapCategory(category)
     mappedList[mapped.id] = mapped
     if (category.parent) {
         const parent = mappedList[category.parent.id] || mapAndLinkCategory(items)(items.find(c => c.id === category.parent.id))
