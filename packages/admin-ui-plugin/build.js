@@ -5,7 +5,23 @@ const { exec } = require('child_process');
 
 console.log('Building admin-ui from source...');
 exec(
-    'yarn build --prod=true',
+    // yarn gives error, so fallback on npm:
+//     Building admin-ui from source...
+// { Error: Command failed: yarn build --prod=true
+// Killed
+// error Command failed with exit code 137.
+
+//     at ChildProcess.exithandler (child_process.js:294:12)
+//     at ChildProcess.emit (events.js:189:13)
+//     at maybeClose (internal/child_process.js:970:16)
+//     at Process.ChildProcess._handle.onexit (internal/child_process.js:259:5)
+//   killed: false,
+//   code: 137,
+//   signal: null,
+//   cmd: 'yarn build --prod=true' }
+
+    'npm run build --prod=true',
+    // 'yarn build --prod=true',
     {
         cwd: path.join(__dirname, '../../admin-ui'),
     },
