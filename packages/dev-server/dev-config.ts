@@ -38,6 +38,21 @@ export const devConfig: VendureConfig = {
         paymentMethodHandlers: [examplePaymentHandler],
     },
     customFields: {
+        Product: [
+            { type: 'localeString', name: 'abstractText' },
+            { type: 'int', name: 'abstractImage1Id' },
+            { type: 'int', name: 'abstractImage2Id' },
+            { type: 'int', name: 'featuredImage1Id' },
+            { type: 'int', name: 'featuredImage2Id' },
+            { type: 'int', name: 'featuredImage3Id' },
+            { type: 'int', name: 'featuredImage4Id' },
+            { type: 'int', name: 'mayAlsoLike1Id' },
+            { type: 'int', name: 'mayAlsoLike2Id' },
+            { type: 'int', name: 'mayAlsoLike3Id' }
+        ],
+        OrderLine: [
+            { type: 'float', name: 'size' },
+        ]
         /*Product: [
             { type: 'string', name: 'name' },
             { type: 'datetime', name: 'expires' },
