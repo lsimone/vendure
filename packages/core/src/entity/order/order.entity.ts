@@ -32,6 +32,8 @@ export class Order extends VendureEntity {
 
     @Column() code: string;
 
+    @Column() coupon?: string;
+
     @Column('varchar') state: OrderState;
 
     @Column({ default: true })

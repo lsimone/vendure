@@ -21,6 +21,18 @@ export const minimumOrderAmount = new PromotionCondition({
     priorityValue: 10,
 });
 
+export const coupon = new PromotionCondition({
+    description: [{ languageCode: LanguageCode.en, value: 'If order total is greater than { amount }' }],
+    code: 'coupon',
+    args: {
+        coupon: { type: 'string' },
+    },
+    check(order: Order, args) {
+        return !!args.coupon && order.coupon === args.coupon;
+    },
+    priorityValue: 10,
+});
+
 export const dateRange = new PromotionCondition({
     code: 'date_range',
     description: [{ languageCode: LanguageCode.en, value: 'If Order placed between { start } and { end }' }],
