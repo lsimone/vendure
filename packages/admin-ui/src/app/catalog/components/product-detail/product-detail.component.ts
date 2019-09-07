@@ -85,6 +85,7 @@ export class ProductDetailComponent extends BaseDetailComponent<ProductWithVaria
     variants$: Observable<ProductWithVariants.Variants[]>;
     taxCategories$: Observable<TaxCategory.Fragment[]>;
     customFields: CustomFieldConfig[];
+    notYetHandledCustomFields: CustomFieldConfig[];
     customVariantFields: CustomFieldConfig[];
     detailForm: FormGroup;
     assetChanges: SelectedAssets = {};
@@ -107,10 +108,8 @@ export class ProductDetailComponent extends BaseDetailComponent<ProductWithVaria
         private changeDetector: ChangeDetectorRef,
     ) {
         super(route, router, serverConfigService);
-        const allCF = this.getCustomFieldConfig('Product');
-        this.customFields = filterCustomFields(allCF);
-        // console.warn('ALLL', this.customFields);
-        // console.warn(allCF);
+        this.customFields = this.getCustomFieldConfig('Product');
+        this.notYetHandledCustomFields = filterCustomFields(this.customFields);
         this.customVariantFields = this.getCustomFieldConfig('ProductVariant');
         this.detailForm = this.formBuilder.group({
             product: this.formBuilder.group({

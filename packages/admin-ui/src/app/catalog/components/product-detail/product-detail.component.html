@@ -81,14 +81,14 @@
                                     label="Wall home page description"
                                 ></vdr-rich-text-editor>
 
-                                <vdr-product-assets
+                                <!-- <vdr-product-assets
                                     [assets]="product.assets"
                                     [featuredAsset]="product.featuredAsset"
                                     (change)="assetChanges = $event"
-                                ></vdr-product-assets>
+                                ></vdr-product-assets> -->
 
                                 <!-- <label>{{ 'common.custom-fields' | translate }}</label> -->
-                                <ng-container *ngFor="let customField of customFields">
+                                <ng-container *ngFor="let customField of notYetHandledCustomFields">
                                     <vdr-custom-field-control
                                         *ngIf="customFieldIsSet(customField.name)"
                                         [customFieldsFormGroup]="detailForm.get(['product', 'customFields'])"
