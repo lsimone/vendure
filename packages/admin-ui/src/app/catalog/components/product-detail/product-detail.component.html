@@ -71,7 +71,23 @@
                             ></vdr-rich-text-editor>
 
                             <section formGroupName="customFields" *ngIf="customFields.length">
-                                <label>{{ 'common.custom-fields' | translate }}</label>
+                                <vdr-rich-text-editor
+                                    formControlName="abstractText"
+                                    label="Editorial abstract"
+                                ></vdr-rich-text-editor>
+
+                                <vdr-rich-text-editor
+                                    formControlName="editorialText"
+                                    label="Wall home page description"
+                                ></vdr-rich-text-editor>
+
+                                <vdr-product-assets
+                                    [assets]="product.assets"
+                                    [featuredAsset]="product.featuredAsset"
+                                    (change)="assetChanges = $event"
+                                ></vdr-product-assets>
+
+                                <!-- <label>{{ 'common.custom-fields' | translate }}</label> -->
                                 <ng-container *ngFor="let customField of customFields">
                                     <vdr-custom-field-control
                                         *ngIf="customFieldIsSet(customField.name)"

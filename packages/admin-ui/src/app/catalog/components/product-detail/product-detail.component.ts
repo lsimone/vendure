@@ -54,6 +54,24 @@ export interface SelectedAssets {
     featuredAssetId?: string;
 }
 
+const notYetRenderedCustomFields = [
+    'abstractImage1Id',
+    'abstractImage2Id',
+    'featuredImage1Id',
+    'featuredImage2Id',
+    'featuredImage3Id',
+    'featuredImage4Id',
+    'editorialImage1Id',
+    'editorialImage2Id',
+    'mayAlsoLike1Id',
+    'mayAlsoLike2Id',
+    'mayAlsoLike3Id',
+    'variantDefaultId',
+];
+
+const filterCustomFields = cf =>
+    notYetRenderedCustomFields.map(field => cf.find(({ name }) => name === field));
+
 @Component({
     selector: 'vdr-product-detail',
     templateUrl: './product-detail.component.html',
@@ -89,7 +107,10 @@ export class ProductDetailComponent extends BaseDetailComponent<ProductWithVaria
         private changeDetector: ChangeDetectorRef,
     ) {
         super(route, router, serverConfigService);
-        this.customFields = this.getCustomFieldConfig('Product');
+        const allCF = this.getCustomFieldConfig('Product');
+        this.customFields = filterCustomFields(allCF);
+        // console.warn('ALLL', this.customFields);
+        // console.warn(allCF);
         this.customVariantFields = this.getCustomFieldConfig('ProductVariant');
         this.detailForm = this.formBuilder.group({
             product: this.formBuilder.group({

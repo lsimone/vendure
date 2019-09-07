@@ -40,6 +40,7 @@ export class ProductAssetsComponent {
     constructor(private modalService: ModalService, private changeDetector: ChangeDetectorRef) {}
 
     selectAssets() {
+        // console.warn('ASSETS', this.assets);
         this.modalService
             .fromComponent(AssetPickerDialogComponent, {
                 size: 'xl',
