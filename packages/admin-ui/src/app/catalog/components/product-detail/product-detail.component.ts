@@ -70,7 +70,7 @@ const notYetRenderedCustomFields = [
 ];
 
 const filterCustomFields = cf =>
-    notYetRenderedCustomFields.map(field => cf.find(({ name }) => name === field));
+    notYetRenderedCustomFields.map(field => cf.find(({ name }) => name === field)).filter(v => !!v);
 
 @Component({
     selector: 'vdr-product-detail',
