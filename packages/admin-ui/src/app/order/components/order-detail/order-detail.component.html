@@ -63,7 +63,7 @@
                     class="order-line"
                     [class.is-cancelled]="line.quantity === 0"
                 >
-                    <td class="align-middle thumb">
+                    <td *ngIf="line.featuredAsset" class="align-middle thumb">
                         <img [src]="line.featuredAsset.preview + '?preset=tiny'" />
                     </td>
                     <td class="align-middle name">{{ line.productVariant.name }}</td>
