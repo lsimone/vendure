@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "yarn reset-extensions && ng build --prod && yarn build:devkit",
+    "build-dev": "yarn reset-extensions && ng build && yarn build:devkit",
     "build:devkit": "tsc -p tsconfig.devkit.json",
     "dev": "ng serve",
     "serve": "ws -d dist/vendure-admin/ --rewrite '/admin/(.*) -> /$1' --verbose",

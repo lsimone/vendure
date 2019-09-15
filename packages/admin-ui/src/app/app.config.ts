@@ -10,6 +10,8 @@ export const DEFAULT_CURRENCY = '£';
 let vendureUiConfig: AdminUiConfig | undefined;
 
 export function loadAppConfig(): Promise<void> {
+    // tslint:disable-next-line:no-console
+    console.log(`*** Loading ${environment.production ? 'prod' : 'dev'} config`);
     return (environment.production
         ? fetch('./vendure-ui-config.json')
         : fetch('./vendure-ui-config.dev.json')

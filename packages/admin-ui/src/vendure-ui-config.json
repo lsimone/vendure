@@ -1,6 +1,6 @@
 {
-  "apiHost": "auto",
-  "apiPort": "auto",
+  "apiHost": "http://116.203.81.60",
+  "apiPort": 3000,
   "adminApiPath": "admin-api",
   "tokenMethod": "cookie",
   "authTokenHeaderKey": "vendure-auth-token"
