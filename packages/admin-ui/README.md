@@ -1,3 +1,16 @@
+# BUILD AND DEPLOY
+
+`yarn build`
+
+upload `dist/vendure-admin` folder on S3
+
+# DEV
+`yarn dev`
+
+# test build su DB locale:
+`yarn build-dev`
+`yarn serve`
+
 # Vendure Admin UI
 
 This is the administration interface for Vendure.
