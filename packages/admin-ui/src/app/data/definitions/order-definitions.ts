@@ -88,6 +88,9 @@ export const ORDER_DETAIL_FRAGMENT = gql`
             unitPrice
             unitPriceWithTax
             quantity
+            customFields {
+                size
+            }
             items {
                 id
                 unitPrice

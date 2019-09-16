@@ -50,8 +50,8 @@
             <table class="order-lines table">
                 <thead>
                     <tr>
-                        <th></th>
                         <th>{{ 'order.product-name' | translate }}</th>
+                        <th>Size</th>
                         <th>{{ 'order.product-sku' | translate }}</th>
                         <th>{{ 'order.unit-price' | translate }}</th>
                         <th>{{ 'order.quantity' | translate }}</th>
@@ -63,10 +63,10 @@
                     class="order-line"
                     [class.is-cancelled]="line.quantity === 0"
                 >
-                    <td *ngIf="line.featuredAsset" class="align-middle thumb">
-                        <img [src]="line.featuredAsset.preview + '?preset=tiny'" />
-                    </td>
                     <td class="align-middle name">{{ line.productVariant.name }}</td>
+                        <td class="align-middle size">
+                            {{ line.customFields.size }}
+                        </td>
                     <td class="align-middle sku">{{ line.productVariant.sku }}</td>
                     <td class="align-middle unit-price">
                         {{ line.unitPriceWithTax / 100 | currency: order.currencyCode }}
